@@ -1,0 +1,24 @@
+# this is the schema...
+
+type Query {
+  products: [Product]
+  productsByPrice(min: Float!, max: Float!): [Product]
+  productByID(id: ID!): Product
+}
+
+type Product {
+  id: ID!
+  description: String!
+  price: Float!
+  reviews: [Review]
+}
+
+type Review {
+  rating: Int
+  comment: String
+}
+
+type Mutation {
+  newProduct(id: ID!, description: String!, price: Float!): Product
+  newProductReview(id: ID!, comment: String, rating: Int!): Review
+}
